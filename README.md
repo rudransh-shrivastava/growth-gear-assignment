@@ -153,7 +153,7 @@ curl -X POST "https://growth-gear-assignment.onrender.com/api/query" \
 curl -X POST "https://growth-gear-assignment.onrender.com/api/query" \
      -H "Content-Type: application/json" \
      -H "x-api-key: some_api_key_here" \
-     -d '{ "query": "find newcustomer in customers" }'
+     -d '{ "query": "find sofa in products" }'
 ```
 
 # Curl Request Examples for /validate
