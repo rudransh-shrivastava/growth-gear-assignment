@@ -1,7 +1,7 @@
 # Notes for reviewers: 
 - I know using regex in production is a terrible idea, I have done it to mimic an AI parsing the text.
 - The api key is hardcoded in code for testing purposes, it won't be like that in production of course.
-- deployed link is [UPDATE ME](localhost)
+- Deployed link is [Render Deployment](https://growth-gear-assignment.onrender.com/)
 
 # Setup Instructions
 
@@ -117,7 +117,7 @@ npm run dev
 
 ## Fetch all products
 ```bash
-curl -X POST "http://localhost:3000/api/query" \
+curl -X POST "https://growth-gear-assignment.onrender.com/api/query" \
      -H "Content-Type: application/json" \
      -H "x-api-key: some_api_key_here" \
      -d '{ "query": "show all products" }'
@@ -125,7 +125,7 @@ curl -X POST "http://localhost:3000/api/query" \
 
 ## Fetch all customers
 ```bash
-curl -X POST "http://localhost:3000/api/query" \
+curl -X POST "https://growth-gear-assignment.onrender.com/api/query" \
      -H "Content-Type: application/json" \
      -H "x-api-key: some_api_key_here" \
      -d '{ "query": "show all customers" }'
@@ -133,7 +133,7 @@ curl -X POST "http://localhost:3000/api/query" \
 
 ## Get total purchases in the North region
 ```bash
-curl -X POST "http://localhost:3000/api/query" \
+curl -X POST "https://growth-gear-assignment.onrender.com/api/query" \
      -H "Content-Type: application/json" \
      -H "x-api-key: some_api_key_here" \
      -d '{ "query": "total purchases in north" }'
@@ -141,7 +141,7 @@ curl -X POST "http://localhost:3000/api/query" \
 
 ## Find "laptop" in products
 ```bash
-curl -X POST "http://localhost:3000/api/query" \
+curl -X POST "https://growth-gear-assignment.onrender.com/api/query" \
      -H "Content-Type: application/json" \
      -H "x-api-key: some_api_key_here" \
      -d '{ "query": "find laptop in products" }'
@@ -149,7 +149,7 @@ curl -X POST "http://localhost:3000/api/query" \
 
 ## Find "newcustomer" in customers
 ```bash
-curl -X POST "http://localhost:3000/api/query" \
+curl -X POST "https://growth-gear-assignment.onrender.com/api/query" \
      -H "Content-Type: application/json" \
      -H "x-api-key: some_api_key_here" \
      -d '{ "query": "find newcustomer in customers" }'
@@ -158,7 +158,7 @@ curl -X POST "http://localhost:3000/api/query" \
 # Curl Request Examples for /validate
 ## Validate any query
 ```bash
-curl -X POST "http://localhost:3000/api/validate" \
+curl -X POST "https://growth-gear-assignment.onrender.com/api/validate" \
      -H "Content-Type: application/json" \
      -H "x-api-key: some_api_key_here" \
      -d '{ "query": "show all products" }'
@@ -168,15 +168,14 @@ curl -X POST "http://localhost:3000/api/validate" \
 
 ## Explain "total purchases in north"
 ```bash
-curl -X POST "http://localhost:3000/api/explain" \
+curl -X POST "https://growth-gear-assignment.onrender.com/api/explain" \
      -H "Content-Type: application/json" \
      -H "x-api-key: some_api_key_here" \
      -d '{ "query": "total purchases in north" }'
 ```
 ## Explain "find laptop in products"
 ```bash
-curl -X POST "http://localhost:3000/api/explain" \
+curl -X POST "https://growth-gear-assignment.onrender.com/api/explain" \
      -H "Content-Type: application/json" \
      -H "x-api-key: some_api_key_here" \
      -d '{ "query": "find laptop in products" }'
-```
