@@ -2,6 +2,7 @@
 - I know using regex in production is a terrible idea, I have done it to mimic an AI parsing the text.
 - The api key is hardcoded in code for testing purposes, it won't be like that in production of course.
 - Deployed link is [Render Deployment](https://growth-gear-assignment.onrender.com/)
+- Please note that it may take more than 50 seconds for the first request on the above URL because Render marks the project inactive
 
 # Setup Instructions
 
