@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import queryTranslator from "../services/queryTranslatior";
+import queryTranslatorService from "../services/queryTranslatorService";
 import { QueryResponse } from "../types";
 
 export class QueryController {
@@ -11,7 +11,7 @@ export class QueryController {
         throw new Error("Query is empty");
       }
 
-      const results = queryTranslator.processQuery(query);
+      const results = queryTranslatorService.processQuery(query);
 
       res.json({
         success: true,
@@ -30,8 +30,8 @@ export class QueryController {
     try {
       const { query } = req.body;
 
-      const explanation = queryTranslator.explainQuery(query);
-
+      // const explanation = queryTranslatorService.explainQuery(query);
+      const explanation = "todo";
       res.json({
         success: true,
         data: explanation,
@@ -50,8 +50,8 @@ export class QueryController {
       const { query } = req.body;
 
       // Attempt to translate the query
-      const result = queryTranslator.translateQuery(query);
-
+      // const result = queryTranslatorService.translateQuery(query);
+      const result = "todo";
       res.json({
         success: true,
         data: {
