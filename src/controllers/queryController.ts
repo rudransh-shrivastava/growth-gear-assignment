@@ -1,6 +1,13 @@
 import { Request, Response } from "express";
 import queryTranslatorService from "../services/queryTranslatorService";
-import { QueryResponse } from "../types";
+
+type QueryResponse = {
+  success: boolean;
+  data?: any;
+  error?: string;
+  message?: string;
+  explaination?: string[];
+};
 
 export class QueryController {
   static processQuery = (req: Request, res: Response<QueryResponse>) => {
@@ -15,7 +22,7 @@ export class QueryController {
 
       res.json({
         success: true,
-        data: results,
+        data: results.data,
       });
     } catch (error) {
       res.status(422).json({
@@ -30,11 +37,10 @@ export class QueryController {
     try {
       const { query } = req.body;
 
-      // const explanation = queryTranslatorService.explainQuery(query);
-      const explanation = "todo";
+      const data = queryTranslatorService.processQuery(query);
       res.json({
         success: true,
-        data: explanation,
+        explaination: data.explaination,
       });
     } catch (error) {
       res.status(422).json({
@@ -50,14 +56,13 @@ export class QueryController {
       const { query } = req.body;
 
       // Attempt to translate the query
-      // const result = queryTranslatorService.translateQuery(query);
-      const result = "todo";
+      const result = queryTranslatorService.translate(query);
       res.json({
         success: true,
         data: {
           isValid: true,
           message: "Query is valid",
-          details: result,
+          data: result,
         },
       });
     } catch (error) {

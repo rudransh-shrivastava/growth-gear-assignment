@@ -20,7 +20,7 @@ export class QueryTranslator {
         // SELECT SUM(totalPurchases) FROM customers WHERE region = 'North'
         // OR
         // SELECT SUM(revenue) FROM sales
-        pattern: /total (purchases|revenue) in (\w+)/,
+        pattern: /total (purchases|revenue|sales) in (\w+)/,
         translate: (match: RegExpMatchArray) => {
           if (match[1] == "purchases") {
             return {

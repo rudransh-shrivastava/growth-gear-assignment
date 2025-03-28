@@ -1,3 +1,8 @@
+export interface QueryData {
+  data: DataRecord[];
+  explaination: string[];
+}
+
 export interface DataRecord {
   id: number;
   [key: string]: any;
@@ -34,21 +39,26 @@ class MockDatabase {
       { id: 4, name: "new customer", region: "north", totalPurchases: 7500 },
     ],
   };
-  public query(options: QueryOptions): DataRecord[] {
+  public query(options: QueryOptions): QueryData {
     // Start with all the data
     // then we will filter / select / aggregate as needed
 
     let data = this.data[options.table];
+    let explaination: string[] = [`Starting with all ${options.table} data`];
 
     // SELECT
     // we only return the specified fields
     if (options.select) {
       console.log("Selecting: ", options.select);
+
       data.map((row) => {
         let newRow: DataRecord = { id: row.id };
         options.select!.forEach((field) => {
           newRow[field] = row[field];
         });
+        // explain in english
+        explaination.push(`Selecting ${options.select!.join(", ")}`);
+
         return newRow;
       });
     }
@@ -58,6 +68,9 @@ class MockDatabase {
     // we only return the rows that match the where clause
     if (options.where) {
       console.log("Filtering by: ", options.where);
+      explaination.push(
+        `Filtering by ${options.where[0]} = ${options.where[1]}`,
+      );
       data = data.filter((row) => row[options.where![0]] == options.where![1]);
     }
     console.log("After where clause: ", data);
@@ -80,9 +93,16 @@ class MockDatabase {
         });
         data = [{ id: 1, average: total / data.length }];
       }
+      explaination.push(
+        `Aggregating by ${options.aggregate} ${options.aggregateField}`,
+      );
     }
 
-    return data;
+    if (explaination.length == 1) {
+      explaination.push("No operations performed");
+    }
+    console.log("Explanation: ", explaination);
+    return { data, explaination };
   }
 }
 
